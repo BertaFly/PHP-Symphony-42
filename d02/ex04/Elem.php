@@ -57,7 +57,7 @@ class Elem {
     return $attrString;
   }
 
-  public function getHTML($html = "") {
+  public function getHTML() {
     $tagNeedToClose = array();
 
     foreach ($this->content as $key => $value) {
@@ -68,7 +68,7 @@ class Elem {
       } elseif ($key === "content") {
         foreach ($value as $contentKey => $contentValue) {
           if ($contentValue instanceof Elem) {
-            $this->html .= $contentValue->getHTML($html);
+            $this->html .= $contentValue->getHTML();
           } else {
               $this->html .=  "{$contentValue}";
               $closeTag = array_shift($tagNeedToClose);
